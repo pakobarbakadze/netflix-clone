@@ -5,7 +5,6 @@ import classes from './Row.module.css'
 const Row = ({ title, fetch, isLargeRow }) => {
   const base_url = "https://image.tmdb.org/t/p/original/";
   const { data } = fetch();
-  console.log(data);
 
   return (
     <div className={classes.row}>

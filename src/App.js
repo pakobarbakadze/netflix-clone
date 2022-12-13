@@ -6,7 +6,7 @@ import BrowsePage from "./pages/BrowsePage/BrowsePage";
 import HomePage from "./pages/HomePage/HomePage";
 
 const App = () => {
-  const user = null;
+  const user = "null";
 
   return (
     <div className="app">
