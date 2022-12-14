@@ -1,9 +1,7 @@
 import React from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
 
-import { auth } from "../../firebase";
 import { userActions } from "../../redux/ConfigureStore.User";
 
 import Nav from "../../components/Nav/Nav";
@@ -16,7 +14,6 @@ const ProfilePage = () => {
   const dispatch = useDispatch();
 
   const signout = () => {
-    auth.signOut();
     dispatch(userActions.clearState());
     navigate("/");
   };

@@ -1,14 +1,12 @@
 import React, { useRef, useState } from "react";
-import { auth } from "../../firebase";
-import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
-import { useDispatch } from 'react-redux'
+import { useDispatch } from "react-redux";
 
-import { userActions } from '../../redux/ConfigureStore.User'
+import { userActions } from "../../redux/ConfigureStore.User";
 
 import classes from "./AuthModal.module.css";
 
 const AuthModal = (props) => {
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
   const [mode, setMode] = useState(props.mode);
 
   const emailRef = useRef(null);
@@ -16,25 +14,12 @@ const AuthModal = (props) => {
 
   const signup = (event) => {
     event.preventDefault();
-    createUserWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value)
-      .then((authUser) => {
-        //console.log(authUser);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    dispatch(userActions.setState(emailRef.current.value));
   };
 
   const login = (event) => {
     event.preventDefault();
-    signInWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        dispatch(userActions.setState(user.email))
-      })
-      .catch((error) => {
-        console.log(error)
-      });
+    dispatch(userActions.setState(emailRef.current.value));
   };
 
   return (
