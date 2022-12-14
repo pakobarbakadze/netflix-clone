@@ -1,12 +1,13 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
+import { useSelector } from "react-redux";
 import "./App.css";
 
 import BrowsePage from "./pages/BrowsePage/BrowsePage";
 import HomePage from "./pages/HomePage/HomePage";
 
 const App = () => {
-  const user = "null";
+  const user = useSelector((state) => state.userReducer.user);
 
   return (
     <div className="app">

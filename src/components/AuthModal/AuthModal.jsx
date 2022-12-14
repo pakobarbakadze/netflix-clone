@@ -1,10 +1,14 @@
 import React, { useRef, useState } from "react";
 import { auth } from "../../firebase";
 import { createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { useDispatch } from 'react-redux'
+
+import { userActions } from '../../redux/ConfigureStore.User'
 
 import classes from "./AuthModal.module.css";
 
 const AuthModal = (props) => {
+  const dispatch = useDispatch()
   const [mode, setMode] = useState(props.mode);
 
   const emailRef = useRef(null);
@@ -26,13 +30,10 @@ const AuthModal = (props) => {
     signInWithEmailAndPassword(auth, emailRef.current.value, passwordRef.current.value)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log(user);
+        dispatch(userActions.setState(user.email))
       })
       .catch((error) => {
-        const errorCode = error.code;
-        console.log(errorCode);
-        const errorMessage = error.message;
-        console.log(errorMessage);
+        console.log(error)
       });
   };
 

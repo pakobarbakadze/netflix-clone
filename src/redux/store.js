@@ -1,10 +1,12 @@
 import { configureStore } from "@reduxjs/toolkit";
 
-import { tmdbApi } from './tmdbApi'
+import userReducer from "./ConfigureStore.User";
+import { tmdbApi } from "./tmdbApi";
 
 const store = configureStore({
   reducer: {
-    [tmdbApi.reducerPath]: tmdbApi.reducer
+    userReducer,
+    [tmdbApi.reducerPath]: tmdbApi.reducer,
   },
   middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(tmdbApi.middleware),
 });
