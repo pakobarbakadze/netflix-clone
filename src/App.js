@@ -5,6 +5,7 @@ import "./App.css";
 
 import BrowsePage from "./pages/BrowsePage/BrowsePage";
 import HomePage from "./pages/HomePage/HomePage";
+import ProfilePage from "./pages/ProfilePage/ProfilePage";
 
 const App = () => {
   const user = useSelector((state) => state.userReducer.user);
@@ -16,6 +17,7 @@ const App = () => {
       ) : (
         <Routes>
           <Route path="/" element={<BrowsePage />} />
+          <Route path="profile" element={<ProfilePage />} />
         </Routes>
       )}
     </div>
